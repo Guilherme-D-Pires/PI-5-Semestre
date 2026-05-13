@@ -4,8 +4,8 @@ Projeto com frontend estático (HTML, CSS e JavaScript) consumindo uma API backe
 
 ## Integrantes
 
-- Christopher Gois Agudelo
 - Gabriel Henrique Alves Raposo
+- Christopher Gois Agudelo
 - Guilherme Donelli Pires
 - Guilherme Henrique Carvalho Teixeira Silva
 - Mirella Anacleto das Dores
