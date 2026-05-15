@@ -14,7 +14,7 @@ Projeto com frontend estático (HTML, CSS e JavaScript) consumindo uma API backe
 ## Estrutura do projeto
 
 ```text
-PTI-5semestre/
+PI-5semestre/
 |-- server.js
 |-- package.json
 |-- backend/
@@ -53,13 +53,13 @@ PTI-5semestre/
 ### Clone o repositório
 
 ```bash
-git clone https://github.com/grupopti192-cpu/PTI-5semestre
+git clone https://github.com/Guilherme-D-Pires/PI-5semestre
 ```
 
 ### Abra o projeto
 
 ```bash
-cd PTI-5semestre
+cd PI-5semestre
 ```
 
 ### Instale as dependências
