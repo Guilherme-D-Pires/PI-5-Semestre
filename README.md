@@ -1,277 +1,125 @@
-# 💊 PTI 5º Semestre — Farmácia Delivery
+PTI 5º Semestre
 
-Projeto acadêmico desenvolvido para o PTI do 5º semestre, composto por um frontend estático em HTML, CSS e JavaScript consumindo uma API backend desenvolvida em Node.js com Express.
+Projeto com frontend estático (HTML, CSS e JavaScript) consumindo uma API backend em Node.js/Express para fluxo de farmácia delivery. O frontend é servido pelo próprio backend, e os dados da aplicação são persistidos em banco SQLite.
 
-O sistema simula um fluxo de farmácia delivery, permitindo autenticação de usuários, consulta de farmácias e visualização de produtos. O frontend é servido pelo próprio backend, e os dados são persistidos em banco SQLite.
+Integrantes
 
----
+Christopher Gois Agudelo
 
-# 👥 Integrantes
+Gabriel Henrique Alves Raposo
 
-- Christopher Gois Agudelo
-- Gabriel Henrique Alves Raposo
-- Guilherme Donelli Pires
-- Guilherme Henrique Carvalho Teixeira Silva
-- Mirella Anacleto das Dores
-- Yan Carlos dos Santos Rodrigues
+Guilherme Donelli Pires
 
----
+Guilherme Henrique Carvalho Teixeira Silva
 
-# 🗂 Estrutura do Projeto
+Mirella Anacleto das Dores
 
-```text
-PTI-5semestre/
-│
-├── server.js
-├── package.json
-├── README.md
-│
-├── backend/
-│   ├── controllers/
-│   ├── db/
-│   ├── media/
-│   ├── routes/
-│   └── data/
-│       ├── schema.sql
-│       ├── seed.sql
-│       └── app.db
-│
-└── frontend/
-    ├── index.html
-    ├── login.html
-    ├── farmacia.html
-    └── ...
-```
+Yan Carlos dos Santos Rodrigues
 
----
 
-# 🚀 Tecnologias Utilizadas
+Estrutura do projeto
 
-## Backend
-- Node.js
-- Express
-- SQLite
-- CORS
+PTI-5semestre/  
+|-- server.js  
+|-- package.json  
+|-- backend/  
+|   |-- controllers/  
+|   |-- data/  
+|   |   |-- schema.sql  
+|   |   |-- seed.sql  
+|   |-- db/  
+|   |-- media/  
+|   `-- routes/  
+|-- frontend/  
+|   |-- index.html  
+|   |-- login.html  
+|   |-- farmacia.html  
+|   `-- ...  
+`-- README.md
 
-## Frontend
-- HTML5
-- CSS3
-- JavaScript
-- Leaflet
+Tecnologias utilizadas
 
----
+Node.js
 
-# ⚙ Requisitos do Ambiente
+npm
 
-Antes de executar o projeto, certifique-se de possuir:
+Express
 
-- Node.js 18 ou superior
-- npm 9 ou superior
+CORS
 
----
+SQLite
 
-# 📥 Instalação
+HTML, CSS e JavaScript
 
-## 1. Clone o repositório
+Leaflet
 
-```bash
+
+Requisitos do ambiente
+
+npm 9 ou superior
+
+Node.js 18 ou superior
+
+
+Como preparar o ambiente
+
+Clone o repositório
+
 git clone https://github.com/grupopti192-cpu/PTI-5semestre
-```
 
-## 2. Acesse a pasta do projeto
+Abra o projeto
 
-```bash
 cd PTI-5semestre
-```
 
-## 3. Instale as dependências
+Instale as dependências
 
-```bash
 npm install
-```
 
-Dependências instaladas:
+Esse comando instala:
 
-| Pacote | Função |
-|---|---|
-| express | Servidor HTTP e roteamento |
-| cors | Liberação de acesso entre frontend e backend |
-| sqlite3 | Persistência de dados em banco SQLite |
+express: servidor HTTP e roteamento
 
----
+cors: liberação de acesso entre frontend e backend
 
-# ▶ Como Executar o Projeto
+sqlite3: persistência de dados em banco SQLite
 
-Após instalar as dependências, execute:
 
-```bash
+Como executar o projeto
+
+Com as dependências instaladas inicie o servidor:
+
 npm start
-```
 
-O comando inicia o arquivo:
+Essa script executa o server.js que na sua primeira execução:
 
-```text
-server.js
-```
+cria o arquivo SQLite em backend/data/app.db
 
-Na primeira execução o sistema:
+cria as tabelas com base em backend/data/schema.sql
 
-- Cria automaticamente o banco SQLite em:
+importa os dados existentes de backend/data/db.json, quando esse arquivo estiver presente
 
-```text
-backend/data/app.db
-```
+usa backend/data/seed.sql como carga inicial de fallback quando não houver db.json
 
-- Cria as tabelas utilizando:
-
-```text
-backend/data/schema.sql
-```
-
-- Importa os dados de:
-
-```text
-backend/data/db.json
-```
-
-quando o arquivo estiver disponível.
-
-- Caso o `db.json` não exista, utiliza:
-
-```text
-backend/data/seed.sql
-```
-
-como carga inicial padrão.
-
----
-
-# 🌐 Acesso ao Sistema
 
 Se tudo estiver correto, o terminal exibirá:
 
-```text
 http://localhost:3000
-```
 
-Abra no navegador:
+Abra esse endereço no navegador:
 
-```text
 http://localhost:3000
-```
 
----
+Frontend
 
-# 🖥 Frontend
+O frontend não requer build ou instalação adicional.
 
-- O frontend não requer build.
-- Os arquivos estáticos são servidos automaticamente pelo Express.
-- Toda comunicação ocorre via API REST.
+Os arquivos estáticos são servidos automaticamente pelo backend Express.
 
----
 
-# 🔌 Principais Endpoints
+Principais Endpoints
 
-## 📍 GET `/farmacias`
+GET /farmacias - Lista as farmácias disponíveis cadastradas no sistema
 
-Retorna a lista de farmácias cadastradas no sistema.
+GET /produtos - Lista os produtos disponíveis para consulta/compra
 
-### Resposta esperada
-
-```json
-[
-  {
-    "id": 1,
-    "nome": "Farmácia Central",
-    "endereco": "Rua Exemplo, 100",
-    "telefone": "(11) 99999-9999"
-  }
-]
-```
-
-### Status Codes
-
-| Código | Descrição |
-|---|---|
-| 200 | Sucesso ao listar farmácias |
-| 500 | Erro interno do servidor |
-
----
-
-## 📍 GET `/produtos`
-
-Retorna os produtos disponíveis para consulta e compra.
-
-### Resposta esperada
-
-```json
-[
-  {
-    "id": 1,
-    "nome": "Dipirona 500mg",
-    "preco": 12.90,
-    "estoque": 20
-  }
-]
-```
-
-### Status Codes
-
-| Código | Descrição |
-|---|---|
-| 200 | Sucesso ao listar produtos |
-| 500 | Erro interno do servidor |
-
----
-
-## 📍 POST `/login`
-
-Realiza autenticação do usuário no sistema.
-
-### Corpo da requisição
-
-```json
-{
-  "email": "usuario@email.com",
-  "senha": "123456"
-}
-```
-
-### Resposta esperada
-
-```json
-{
-  "message": "Login realizado com sucesso"
-}
-```
-
-### Status Codes
-
-| Código | Descrição |
-|---|---|
-| 200 | Login realizado com sucesso |
-| 401 | Credenciais inválidas |
-| 500 | Erro interno do servidor |
-
----
-
-# 📡 Padrão de Comunicação da API
-
-- A API utiliza o padrão REST.
-- As respostas são retornadas em formato JSON.
-- O backend realiza integração direta com banco SQLite.
-- O frontend consome os endpoints utilizando JavaScript Fetch API.
-
----
-
-# 🔒 Segurança e Validação
-
-- Validação básica de credenciais no endpoint de login.
-- Tratamento de erros no backend utilizando Express.
-- Separação de rotas, controllers e persistência para melhor organização do projeto.
-
----
-
-# 📄 Licença
-
-Projeto desenvolvido exclusivamente para fins acadêmicos.
+POST /login - Realiza autenticação de usuário no sistema
